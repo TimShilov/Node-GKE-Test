@@ -16,5 +16,5 @@ steps:
       - $_DEPLOYMENT
       - $_DEPLOYMENT=gcr.io/$PROJECT_ID/node-gke-test:$BRANCH_NAME
     env:
-      - "CLOUDSDK_COMPUTE_ZONE=$_CLUSTER_ZONE"
-      - "CLOUDSDK_CONTAINER_CLUSTER=$_CLUSTER_NAME"
+      - "CLOUDSDK_COMPUTE_ZONE=us-central1-a"
+      - "CLOUDSDK_CONTAINER_CLUSTER=agency-test"
