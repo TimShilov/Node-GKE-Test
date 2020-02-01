@@ -5,14 +5,6 @@ steps:
   - name: "gcr.io/cloud-builders/docker"
     args: ["push", "gcr.io/$PROJECT_ID/node-gke-test:$BRANCH_NAME"]
 
-#  # kubectl set image deployment/my-deployment mycontainer=myimage
-#  - name: "gcr.io/cloud-builders/kubectl"
-#    args:
-#      - set
-#      - image
-#      - deployment/server
-#      - image=gcr.io/$PROJECT_ID/node-gke-test:$BRANCH_NAME
-
   - name: 'gcr.io/cloud-builders/kubectl'
     id: Deploy
     args:
