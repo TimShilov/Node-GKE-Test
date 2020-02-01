@@ -12,13 +12,13 @@ steps:
 #      - image
 #      - deployment/server
 #      - image=gcr.io/$PROJECT_ID/node-gke-test:$BRANCH_NAME
-#    env:
-#      - "CLOUDSDK_COMPUTE_ZONE=us-central1-a"
-#      - "CLOUDSDK_CONTAINER_CLUSTER=agency-test"
-  - name: "gcr.io/cloud-builders/gke-deploy:stable"
+
+  - name: 'gcr.io/cloud-builders/kubectl'
+    id: Deploy
     args:
-      - run
-      - --filename=./k8s
-      - --image=gcr.io/$PROJECT_ID/node-gke-test:master
-      - --location=us-central1-a
-      - --cluster=agency-test
+      - 'apply'
+      - '-f'
+      - './k8s'
+    env:
+      - "CLOUDSDK_COMPUTE_ZONE=us-central1-a"
+      - "CLOUDSDK_CONTAINER_CLUSTER=agency-test"
