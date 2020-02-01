@@ -16,9 +16,9 @@ spec:
     spec:
       containers:
         - name: server
-          image: gcr.io/$PROJECT_ID/$REPOSITORY:master
+          image: gcr.io/agency-kubernetes-test/node-gke-test:master
           ports:
-            - containerPort: 4242
+            - containerPort: 3000
           env:
             - name: NODE_ENV
               value: "production"
