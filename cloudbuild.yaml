@@ -8,13 +8,20 @@ steps:
   - name: "gcr.io/cloud-builders/docker"
     args: ["push", "gcr.io/$PROJECT_ID/node-gke-test:$BRANCH_NAME"]
 
-  - name: "gcr.io/cloud-builders/kubectl"
+  ## kubectl set image deployment/my-deployment mycontainer=myimage
+  #  - name: "gcr.io/cloud-builders/kubectl"
+  #    args:
+  #      - set
+  #      - image
+  #      - deployment/$_DEPLOYMENT
+  #      - $_DEPLOYMENT=gcr.io/$PROJECT_ID/node-gke-test:$BRANCH_NAME
+  #    env:
+  #      - "CLOUDSDK_COMPUTE_ZONE=us-central1-a"
+  #      - "CLOUDSDK_CONTAINER_CLUSTER=agency-test"
+  - name: "gcr.io/cloud-builders/gke-deploy:stable"
     args:
-      - set
-      - image
-      - deployment
-      - $_DEPLOYMENT
-      - $_DEPLOYMENT=gcr.io/$PROJECT_ID/node-gke-test:$BRANCH_NAME
-    env:
-      - "CLOUDSDK_COMPUTE_ZONE=us-central1-a"
-      - "CLOUDSDK_CONTAINER_CLUSTER=agency-test"
+      - run
+      - --filename=./k8s
+      - --image=gcr.io/$PROJECT_ID/node-gke-test:$BRANCH_NAME
+      - --location=us-central1-a
+      - --cluster=agency-test
