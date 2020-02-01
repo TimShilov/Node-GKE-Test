@@ -1,13 +1,13 @@
-const express = require("express");
-const morgan = require("morgan");
+const express = require('express');
+const morgan = require('morgan');
 
 const PORT = 3000;
 
 const app = express();
-app.use(morgan("dev"));
+app.use(morgan('dev'));
 
-app.get("*", (req, res) => {
-  res.send("Hello World");
+app.get('*', (req, res) => {
+  res.send('Hello Kube');
 });
 
 app.listen(PORT, () => {
