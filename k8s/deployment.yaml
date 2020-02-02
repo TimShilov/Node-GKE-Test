@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: node-gke-test
 spec:
-  replicas: 2
+  replicas: 4
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -22,3 +22,10 @@ spec:
           env:
             - name: NODE_ENV
               value: "production"
+          volumeMounts:
+            - name: node-gke-test-persistent-storage
+              mountPath: /var/www/html
+      volumes:
+        - name: node-gke-test-persistent-storage
+          persistentVolumeClaim:
+            claimName: node-gke-test-volumeclaim

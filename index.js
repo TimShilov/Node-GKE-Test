@@ -7,12 +7,13 @@ const app = express();
 app.use(morgan('tiny'));
 
 app.get('*', (req, res) => {
+  const lines = [
+    'Hello Kubernetes! :-]',
+    `Hostname: ${process.env.HOSTNAME}`,
+  ];
+
   res.send(
-    `Hello Kubernetes! :-]
-      <pre>
-          Hostname: ${process.env.HOSTNAME}
-      </pre>
-    `,
+    `<pre>${lines.join('\n')}</pre>`,
   );
 });
 
