@@ -1,3 +1,5 @@
+const fs = require('fs');
+const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 
@@ -12,6 +14,10 @@ app.get('*', (req, res) => {
     `Hostname: ${process.env.HOSTNAME}`,
   ];
 
+
+  fs.readdirSync(__dirname).forEach((file) => {
+    lines.push(file);
+  });
   res.send(
     `<pre>${lines.join('\n')}</pre>`,
   );
