@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: server
+  name: node-gke-test
 spec:
   replicas: 1
   strategy:
@@ -12,10 +12,10 @@ spec:
   template:
     metadata:
       labels:
-        app: server
+        app: node-gke-test
     spec:
       containers:
-        - name: server
+        - name: node-gke-test
           image: gcr.io/agency-kubernetes-test/node-gke-test:master
           ports:
             - containerPort: 3000

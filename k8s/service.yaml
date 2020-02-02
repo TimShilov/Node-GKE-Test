@@ -1,12 +1,12 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: server
+  name: node-gke-test
 spec:
   selector:
-    app: server
+    app: node-gke-test
   ports:
-    - name: server
+    - name: node-gke-test
       protocol: TCP
       port: 80
       targetPort: 3000
