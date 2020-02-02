@@ -7,7 +7,7 @@ const app = express();
 app.use(morgan('tiny'));
 
 app.get('*', (req, res) => {
-  res.send('Hello Kubernetes!');
+  res.send('Hello Kubernetes! :-)');
 });
 
 app.listen(PORT, () => {
