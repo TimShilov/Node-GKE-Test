@@ -22,10 +22,10 @@ spec:
           env:
             - name: NODE_ENV
               value: "production"
-          volumeMounts:
-            - name: node-gke-test-persistent-storage
-              mountPath: /app/storage
-      volumes:
-        - name: node-gke-test-persistent-storage
-          persistentVolumeClaim:
-            claimName: node-gke-test-volumeclaim
+#          volumeMounts:
+#            - name: node-gke-test-persistent-storage
+#              mountPath: /app/storage
+#      volumes:
+#        - name: node-gke-test-persistent-storage
+#          persistentVolumeClaim:
+#            claimName: node-gke-test-volumeclaim
