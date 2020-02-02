@@ -35,10 +35,10 @@ steps:
       - "CLOUDSDK_COMPUTE_ZONE=us-central1-a"
       - "CLOUDSDK_CONTAINER_CLUSTER=agency-test"
   # push images to Google Container Registry with tags
-  images: [
-    'gcr.io/$PROJECT_ID/node-gke-test:$TAG_NAME',
-    'gcr.io/$PROJECT_ID/node-gke-test:latest'
-  ]
+images: [
+  'gcr.io/$PROJECT_ID/node-gke-test:$TAG_NAME',
+  'gcr.io/$PROJECT_ID/node-gke-test:latest'
+]
 
 #  - name: "gcr.io/cloud-builders/docker"
 #    id: Build
