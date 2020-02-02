@@ -1,27 +1,24 @@
 steps:
-  #step 1
-  - name: 'gcr.io/cloud-builders/docker'
-    entrypoint: 'bash'
-    args: [
-      '-c',
-      'docker pull gcr.io/$PROJECT_ID/node-gke-test:master || exit 0'
-    ]
-  #step 2
-  - name: gcr.io/cloud-builders/docker
-    args: [
-      'build',
-      '-t',
-      'gcr.io/$PROJECT_ID/node-gke-test:master',
-      '.'
-    ]
-  #step 3
+  - name: "gcr.io/cloud-builders/docker"
+    id: Build Container
+    args: ["build", "-t", "gcr.io/agency-kubernetes-test/node-gke-test:master", "."]
+
+  - name: "gcr.io/cloud-builders/docker"
+    id: Push Container
+    args: ["push", "gcr.io/agency-kubernetes-test/node-gke-test:master"]
+
   - name: 'gcr.io/cloud-builders/kubectl'
-    args: ['apply', '-f', 'k8s/']
+    id: Apply Kubernetes files
+    args:
+      - 'apply'
+      - '-f'
+      - './k8s'
     env:
       - "CLOUDSDK_COMPUTE_ZONE=us-central1-a"
       - "CLOUDSDK_CONTAINER_CLUSTER=agency-test"
-  #step 4
+
   - name: 'gcr.io/cloud-builders/kubectl'
+    id: Update Kubernetes Cluster
     args: [
       'set',
       'image',
@@ -32,25 +29,3 @@ steps:
     env:
       - "CLOUDSDK_COMPUTE_ZONE=us-central1-a"
       - "CLOUDSDK_CONTAINER_CLUSTER=agency-test"
-  # push images to Google Container Registry with tags
-images: [
-  'gcr.io/$PROJECT_ID/node-gke-test:master'
-]
-
-#  - name: "gcr.io/cloud-builders/docker"
-#    id: Build
-#    args: ["build", "-t", "gcr.io/agency-kubernetes-test/node-gke-test:master", "."]
-#
-#  - name: "gcr.io/cloud-builders/docker"
-#    id: Push
-#    args: ["push", "gcr.io/agency-kubernetes-test/node-gke-test:master"]
-#
-#  - name: 'gcr.io/cloud-builders/kubectl'
-#    id: Deploy
-#    args:
-#      - 'apply'
-#      - '-f'
-#      - './k8s'
-#    env:
-#      - "CLOUDSDK_COMPUTE_ZONE=us-central1-a"
-#      - "CLOUDSDK_CONTAINER_CLUSTER=agency-test"
