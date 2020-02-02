@@ -4,16 +4,14 @@ steps:
     entrypoint: 'bash'
     args: [
       '-c',
-      'docker pull gcr.io/$PROJECT_ID/node-gke-test:latest || exit 0'
+      'docker pull gcr.io/$PROJECT_ID/node-gke-test:master || exit 0'
     ]
   #step 2
   - name: gcr.io/cloud-builders/docker
     args: [
       'build',
       '-t',
-      'gcr.io/$PROJECT_ID/node-gke-test:$TAG_NAME',
-      '-t',
-      'gcr.io/$PROJECT_ID/node-gke-test:latest',
+      'gcr.io/$PROJECT_ID/node-gke-test:master',
       '.'
     ]
   #step 3
@@ -29,15 +27,14 @@ steps:
       'image',
       'deployment',
       'node-gke-test',
-      'node-gke-test=gcr.io/$PROJECT_ID/node-gke-test:$TAG_NAME'
+      'node-gke-test=gcr.io/$PROJECT_ID/node-gke-test:master'
     ]
     env:
       - "CLOUDSDK_COMPUTE_ZONE=us-central1-a"
       - "CLOUDSDK_CONTAINER_CLUSTER=agency-test"
   # push images to Google Container Registry with tags
 images: [
-  'gcr.io/$PROJECT_ID/node-gke-test:$TAG_NAME',
-  'gcr.io/$PROJECT_ID/node-gke-test:latest'
+  'gcr.io/$PROJECT_ID/node-gke-test:master'
 ]
 
 #  - name: "gcr.io/cloud-builders/docker"
