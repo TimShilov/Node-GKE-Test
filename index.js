@@ -7,7 +7,13 @@ const app = express();
 app.use(morgan('tiny'));
 
 app.get('*', (req, res) => {
-  res.send('Hello Kubernetes! :-]');
+  res.send(
+    `Hello Kubernetes! :-]
+      <pre>
+          ${JSON.stringify(process.env, null, 4)}
+      </pre>
+    `,
+  );
 });
 
 app.listen(PORT, () => {
