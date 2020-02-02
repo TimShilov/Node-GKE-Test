@@ -1,11 +1,11 @@
 steps:
   - name: "gcr.io/cloud-builders/docker"
     id: Build Container
-    args: ["build", "-t", "gcr.io/agency-kubernetes-test/node-gke-test:master", "."]
+    args: ["build", "-t", "gcr.io/agency-kubernetes-test/node-gke-test:$COMMIT_SHA", "."]
 
   - name: "gcr.io/cloud-builders/docker"
     id: Push Container
-    args: ["push", "gcr.io/agency-kubernetes-test/node-gke-test:master"]
+    args: ["push", "gcr.io/agency-kubernetes-test/node-gke-test:$COMMIT_SHA"]
 
   - name: 'gcr.io/cloud-builders/kubectl'
     id: Apply Kubernetes files
@@ -24,7 +24,7 @@ steps:
       'image',
       'deployment',
       'node-gke-test',
-      'node-gke-test=gcr.io/$PROJECT_ID/node-gke-test:master'
+      'node-gke-test=gcr.io/$PROJECT_ID/node-gke-test:$COMMIT_SHA'
     ]
     env:
       - "CLOUDSDK_COMPUTE_ZONE=us-central1-a"
