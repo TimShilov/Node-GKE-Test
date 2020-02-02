@@ -10,7 +10,7 @@ app.use(morgan('tiny'));
 
 app.get('/', (req, res) => {
   const lines = [
-    'Hello Kubernetes! :-]',
+    'Hello Kubernetes! :-)',
     `Hostname: ${process.env.HOSTNAME}`,
   ];
 
