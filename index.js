@@ -10,7 +10,7 @@ app.get('*', (req, res) => {
   res.send(
     `Hello Kubernetes! :-]
       <pre>
-          ${JSON.stringify(process.env, null, 4)}
+          Hostname: ${process.env.HOSTNAME}
       </pre>
     `,
   );
