@@ -20,12 +20,23 @@ steps:
   - name: 'gcr.io/cloud-builders/kubectl'
     id: Update Kubernetes Cluster
     args: [
-      'set',
-      'image',
-      'deployment',
+      'rolling-update',
       'node-gke-test',
-      'node-gke-test=gcr.io/$PROJECT_ID/node-gke-test:$COMMIT_SHA'
+      '--image=gcr.io/$PROJECT_ID/node-gke-test:$COMMIT_SHA'
     ]
     env:
       - "CLOUDSDK_COMPUTE_ZONE=us-central1-a"
       - "CLOUDSDK_CONTAINER_CLUSTER=agency-test"
+
+#  - name: 'gcr.io/cloud-builders/kubectl'
+#    id: Update Kubernetes Cluster
+#    args: [
+#      'set',
+#      'image',
+#      'deployment',
+#      'node-gke-test',
+#      'node-gke-test=gcr.io/$PROJECT_ID/node-gke-test:$COMMIT_SHA'
+#    ]
+#    env:
+#      - "CLOUDSDK_COMPUTE_ZONE=us-central1-a"
+#      - "CLOUDSDK_CONTAINER_CLUSTER=agency-test"
