@@ -24,7 +24,7 @@ spec:
               value: "production"
           volumeMounts:
             - name: node-gke-test-persistent-storage
-              mountPath: /var/www/html
+              mountPath: /app/storage
       volumes:
         - name: node-gke-test-persistent-storage
           persistentVolumeClaim:
