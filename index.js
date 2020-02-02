@@ -14,11 +14,11 @@ app.get('/', (req, res) => {
     `Hostname: ${process.env.HOSTNAME}`,
   ];
 
-  fs.writeFileSync(path.join('./', 'storage', `${new Date().toISOString().split('T')}-${process.env.HOSTNAME}`), '');
-
-  fs.readdirSync(path.join(__dirname, 'storage')).forEach((file) => {
-    lines.push(file);
-  });
+  // fs.writeFileSync(path.join('./', 'storage', `${new Date().toISOString().split('T')}-${process.env.HOSTNAME}`), '');
+  //
+  // fs.readdirSync(path.join(__dirname, 'storage')).forEach((file) => {
+  //   lines.push(file);
+  // });
   res.send(
     `<pre>${lines.join('\n')}</pre>`,
   );
