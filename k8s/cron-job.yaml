@@ -11,6 +11,6 @@ spec:
           containers:
             - name: node-gke-test-cron-job
               image: gcr.io/agency-kubernetes-test/node-gke-test:master
-              command: ['node']
-              args: ['cron-job.js']
+              command: ['ls']
+              # args: ['cron-job.js']
           restartPolicy: OnFailure
