@@ -15,7 +15,7 @@ steps:
       - './k8s'
     env:
       - "CLOUDSDK_COMPUTE_ZONE=us-central1-a"
-      - "CLOUDSDK_CONTAINER_CLUSTER=agency-test"
+      - "CLOUDSDK_CONTAINER_CLUSTER=kubernetes-test"
 
   - name: 'gcr.io/cloud-builders/kubectl'
     id: Update Kubernetes Cluster
@@ -28,4 +28,4 @@ steps:
     ]
     env:
       - "CLOUDSDK_COMPUTE_ZONE=us-central1-a"
-      - "CLOUDSDK_CONTAINER_CLUSTER=agency-test"
+      - "CLOUDSDK_CONTAINER_CLUSTER=kubernetes-test"
