@@ -21,9 +21,9 @@ spec:
             - containerPort: 3000
           resources:
             requests:
-              cpu: "250m"
+              cpu: "50m"
             limits:
-              cpu: "800m"
+              cpu: "100m"
           env:
             - name: NODE_ENV
               value: "production"
