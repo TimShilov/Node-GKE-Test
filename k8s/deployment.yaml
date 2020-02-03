@@ -23,7 +23,7 @@ spec:
             requests:
               cpu: "250m"
             limits:
-              cpu: "500m"
+              cpu: "800m"
           env:
             - name: NODE_ENV
               value: "production"
