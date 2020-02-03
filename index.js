@@ -26,10 +26,18 @@ app.get('/', async (req, res) => {
   const lines = [
     'Hello Kubernetes! (-:',
     `Hostname: ${process.env.HOSTNAME}`,
+    '',
+    'DB contents:',
   ];
   const [rows] = await dbPool.query('SELECT * FROM test_table;');
   rows.forEach((row) => {
     lines.push(JSON.stringify(row));
+  });
+
+  lines.push('', 'Dir contents:');
+
+  fs.readdirSync(__dirname).forEach((file) => {
+    lines.push(file);
   });
 
   res.send(
