@@ -19,6 +19,11 @@ spec:
           image: gcr.io/agency-kubernetes-test/node-gke-test:master
           ports:
             - containerPort: 3000
+          resources:
+            requests:
+              cpu: "250m"
+            limits:
+              cpu: "500m"
           env:
             - name: NODE_ENV
               value: "production"
