@@ -1,0 +1,18 @@
+# NPM packages
+node_modules
+
+# Mounted shared storage
+storage
+
+# Kubernetes definition files
+k8s
+
+# Environment files
+.env*
+
+# Development config files
+README.md
+LICENSE.md
+.eslintrc.js
+.gitignore
+cloudbuild.yaml
