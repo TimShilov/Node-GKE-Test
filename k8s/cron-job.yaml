@@ -1,0 +1,16 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: node-gke-test-cron-job
+spec:
+  schedule: '*/15 * * * *'
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: node-gke-test-cron-job
+              image: gcr.io/agency-kubernetes-test/node-gke-test:master
+              command: ['node']
+              args: ['cron-job.js']
+          restartPolicy: OnFailure
