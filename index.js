@@ -24,7 +24,7 @@ app.use(morgan('tiny'));
 
 app.get('/', async (req, res) => {
   const lines = [
-    'Hello Kubernetes! :-)',
+    'Hello Kubernetes! (-:',
     `Hostname: ${process.env.HOSTNAME}`,
   ];
   const [rows] = await dbPool.query('SELECT * FROM test_table;');
