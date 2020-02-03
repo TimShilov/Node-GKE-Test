@@ -1,7 +1,7 @@
 apiVersion: "extensions/v1beta1"
 kind: "Ingress"
 metadata:
-  name: "node-gke-test.shilov.dev"
+  name: "node-gke-test-shilov-dev"
   namespace: "default"
   annotations:
     networking.gke.io/managed-certificates: "node-gke-test.shilov.dev"
