@@ -36,7 +36,7 @@ app.get('/', async (req, res) => {
 
   lines.push('', 'Dir contents:');
 
-  fs.readdirSync(__dirname).forEach((file) => {
+  fs.readdirSync(path.join(__dirname, 'tasks')).forEach((file) => {
     lines.push(file);
   });
 
