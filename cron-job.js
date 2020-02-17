@@ -15,7 +15,7 @@ const dbPool = mysql.createPool({
 
 (async () => {
   const sql = 'INSERT INTO test_table (value) VALUES (?);';
-  const args = [`${new Date().toISOString().split('T')}-${process.env.HOSTNAME}`];
+  const args = [`${new Date().toISOString().split('T')}-${process.env.HOSTNAME}: ${JSON.stringify(process.argv)}`];
   const [result] = await dbPool.query(sql, args);
   console.log('affectedRows', result.affectedRows);
   process.exit(0);
