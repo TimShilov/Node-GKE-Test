@@ -10,6 +10,6 @@ spec:
         spec:
           containers:
             - name: node-gke-test-cron-job
-              image: gcr.io/agency-kubernetes-test/node-gke-test:master
+              image: gcr.io/agency-kubernetes-test/node-gke-test-cron-job:master
               args: ['hey ho']
           restartPolicy: OnFailure
