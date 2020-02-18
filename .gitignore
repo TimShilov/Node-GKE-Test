@@ -91,3 +91,5 @@ typings/
 
 # Persistent Storage
 storage/*
+
+!*/.gitkeep
