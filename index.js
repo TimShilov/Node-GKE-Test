@@ -35,7 +35,7 @@ app.get('/', async (req, res) => {
   });
 
   try {
-    fs.writeFileSync(path.join('/app/storage', `${new Date().toISOString().split('T')}-${process.env.HOSTNAME}`), '');
+    fs.writeFileSync(path.join('/app/storage', `${new Date().toISOString().split('T')}-${process.env.HOSTNAME}`), 'It\'s working!!!!');
   } catch (error){
     console.error(error);
   }
