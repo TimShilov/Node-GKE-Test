@@ -27,10 +27,10 @@ spec:
           lifecycle:
             postStart:
               exec:
-                command: ["gcsfuse", "-o", "nonempty", "some-bucket", "/mnt/some-bucket"]
+                command: ["gcsfuse", "-o", "nonempty", "node-gke-test-bucket", "/mnt/node-gke-test-bucket"]
             preStop:
               exec:
-                command: ["fusermount", "-u", "/mnt/some-bucket"]
+                command: ["fusermount", "-u", "/mnt/node-gke-test-bucket"]
           env:
             - name: NODE_ENV
               value: "production"

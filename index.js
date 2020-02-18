@@ -34,10 +34,10 @@ app.get('/', async (req, res) => {
     lines.push(JSON.stringify(row));
   });
 
-  if (fs.existsSync('/mnt/some-bucket')) {
+  if (fs.existsSync('/mnt/node-gke-test-bucket')) {
     lines.push('', 'Dir contents:');
 
-    fs.readdirSync('/mnt/some-bucket').forEach((file) => {
+    fs.readdirSync('/mnt/node-gke-test-bucket').forEach((file) => {
       lines.push(file);
     });
   }
