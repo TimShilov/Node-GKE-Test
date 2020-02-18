@@ -34,11 +34,11 @@ app.get('/', async (req, res) => {
     lines.push(JSON.stringify(row));
   });
 
-  lines.push('', 'Dir contents:');
-
-  fs.readdirSync(path.join(__dirname, 'tasks')).forEach((file) => {
-    lines.push(file);
-  });
+  // lines.push('', 'Dir contents:');
+  //
+  // fs.readdirSync(path.join(__dirname, 'tasks')).forEach((file) => {
+  //   lines.push(file);
+  // });
 
   res.send(
     `<pre>${lines.join('\n')}</pre>`,
