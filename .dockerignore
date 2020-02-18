@@ -2,7 +2,7 @@
 node_modules
 
 # Mounted shared storage
-storage
+storage/*
 
 # Kubernetes definition files
 k8s
@@ -16,3 +16,5 @@ LICENSE.md
 .eslintrc.js
 .gitignore
 cloudbuild.yaml
+
+!*/.gitkeep

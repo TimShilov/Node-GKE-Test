@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
   && apt-get update \
   && apt-get install --yes gcsfuse \
   && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+#   && mkdir -p /app/storage
 
 COPY package*.json ./
 
