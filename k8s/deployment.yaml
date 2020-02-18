@@ -19,11 +19,18 @@ spec:
           image: gcr.io/agency-kubernetes-test/node-gke-test:master
           ports:
             - containerPort: 3000
-#          resources:
-#            requests:
-#              cpu: "50m"
-#            limits:
-#              cpu: "100m"
+          securityContext:
+            privileged: true
+            capabilities:
+              add:
+                - SYS_ADMIN
+          lifecycle:
+            postStart:
+              exec:
+                command: ["gcsfuse", "-o", "nonempty", "some-bucket", "/mnt/some-bucket"]
+            preStop:
+              exec:
+                command: ["fusermount", "-u", "/mnt/some-bucket"]
           env:
             - name: NODE_ENV
               value: "production"

@@ -34,11 +34,13 @@ app.get('/', async (req, res) => {
     lines.push(JSON.stringify(row));
   });
 
-  // lines.push('', 'Dir contents:');
-  //
-  // fs.readdirSync(path.join(__dirname, 'tasks')).forEach((file) => {
-  //   lines.push(file);
-  // });
+  if (fs.existsSync('/mnt/some-bucket')) {
+    lines.push('', 'Dir contents:');
+
+    fs.readdirSync('/mnt/some-bucket').forEach((file) => {
+      lines.push(file);
+    });
+  }
 
   res.send(
     `<pre>${lines.join('\n')}</pre>`,
