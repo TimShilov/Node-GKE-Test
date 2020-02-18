@@ -34,7 +34,11 @@ app.get('/', async (req, res) => {
     lines.push(JSON.stringify(row));
   });
 
-  fs.writeFileSync(path.join('./', 'storage', `${new Date().toISOString().split('T')}-${process.env.HOSTNAME}`), '');
+  try {
+    fs.writeFileSync(path.join('/app/storage', `${new Date().toISOString().split('T')}-${process.env.HOSTNAME}`), '');
+  } catch (error){
+    console.error(error);
+  }
 
   if (fs.existsSync('/app/storage')) {
     lines.push('', 'Dir contents:');
