@@ -13,14 +13,14 @@ steps:
       '--destination=gcr.io/agency-kubernetes-test/node-gke-test:$COMMIT_SHA',
       '--cache=true'
     ]
-
-  - name: 'gcr.io/kaniko-project/executor:latest'
-    id: Build and push cronjob container
-    args: [
-      '--dockerfile=crontask.Dockerfile',
-      '--destination=gcr.io/agency-kubernetes-test/node-gke-test-cron-job:$COMMIT_SHA',
-      '--cache=true'
-    ]
+#
+#  - name: 'gcr.io/kaniko-project/executor:latest'
+#    id: Build and push cronjob container
+#    args: [
+#      '--dockerfile=crontask.Dockerfile',
+#      '--destination=gcr.io/agency-kubernetes-test/node-gke-test-cron-job:$COMMIT_SHA',
+#      '--cache=true'
+#    ]
 
   - name: 'gcr.io/cloud-builders/kubectl'
     id: Apply Kubernetes files
@@ -41,16 +41,16 @@ steps:
     env:
       - "CLOUDSDK_COMPUTE_ZONE=us-central1-a"
       - "CLOUDSDK_CONTAINER_CLUSTER=kubernetes-test"
-
-  - name: 'gcr.io/cloud-builders/kubectl'
-    id: Update Kubernetes Cron job
-    args: [
-      'set',
-      'image',
-      'cronjob',
-      'node-gke-test-cron-job',
-      'node-gke-test-cron-job=gcr.io/$PROJECT_ID/node-gke-test-cron-job:$COMMIT_SHA'
-    ]
-    env:
-      - "CLOUDSDK_COMPUTE_ZONE=us-central1-a"
-      - "CLOUDSDK_CONTAINER_CLUSTER=kubernetes-test"
+#
+#  - name: 'gcr.io/cloud-builders/kubectl'
+#    id: Update Kubernetes Cron job
+#    args: [
+#      'set',
+#      'image',
+#      'cronjob',
+#      'node-gke-test-cron-job',
+#      'node-gke-test-cron-job=gcr.io/$PROJECT_ID/node-gke-test-cron-job:$COMMIT_SHA'
+#    ]
+#    env:
+#      - "CLOUDSDK_COMPUTE_ZONE=us-central1-a"
+#      - "CLOUDSDK_CONTAINER_CLUSTER=kubernetes-test"

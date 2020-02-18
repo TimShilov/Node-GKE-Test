@@ -1,15 +1,15 @@
-apiVersion: batch/v1beta1
-kind: CronJob
-metadata:
-  name: node-gke-test-cron-job
-spec:
-  schedule: '*/5 * * * *'
-  jobTemplate:
-    spec:
-      template:
-        spec:
-          containers:
-            - name: node-gke-test-cron-job
-              image: gcr.io/agency-kubernetes-test/node-gke-test-cron-job:master
-              args: ['cron-job.js', 'hey', 'ho']
-          restartPolicy: Never
+#apiVersion: batch/v1beta1
+#kind: CronJob
+#metadata:
+#  name: node-gke-test-cron-job
+#spec:
+#  schedule: '*/5 * * * *'
+#  jobTemplate:
+#    spec:
+#      template:
+#        spec:
+#          containers:
+#            - name: node-gke-test-cron-job
+#              image: gcr.io/agency-kubernetes-test/node-gke-test-cron-job:master
+#              args: ['cron-job.js', 'hey', 'ho']
+#          restartPolicy: Never
