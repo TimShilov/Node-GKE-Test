@@ -30,13 +30,26 @@ steps:
       - "CLOUDSDK_CONTAINER_CLUSTER=kubernetes-test"
 
   - name: 'gcr.io/cloud-builders/kubectl'
-    id: Update Kubernetes Cluster
+    id: Update Kubernetes deployment
     args: [
       'set',
       'image',
       'deployment',
       'node-gke-test',
       'node-gke-test=gcr.io/$PROJECT_ID/node-gke-test:$COMMIT_SHA'
+    ]
+    env:
+      - "CLOUDSDK_COMPUTE_ZONE=us-central1-a"
+      - "CLOUDSDK_CONTAINER_CLUSTER=kubernetes-test"
+
+  - name: 'gcr.io/cloud-builders/kubectl'
+    id: Update Kubernetes Cron job
+    args: [
+      'set',
+      'image',
+      'cronjob',
+      'node-gke-test-cron-job',
+      'node-gke-test-cron-job=gcr.io/$PROJECT_ID/node-gke-test-cron-job:$COMMIT_SHA'
     ]
     env:
       - "CLOUDSDK_COMPUTE_ZONE=us-central1-a"
