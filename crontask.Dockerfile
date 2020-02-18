@@ -8,6 +8,6 @@ RUN npm ci
 
 EXPOSE 3000
 
-ENTRYPOINT ['node', 'cron-job.js']
+ENTRYPOINT ['node']
 
 COPY . .
